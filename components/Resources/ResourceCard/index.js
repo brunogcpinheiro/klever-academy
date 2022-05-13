@@ -4,7 +4,7 @@ import { BiMovie } from 'react-icons/bi'
 import { AiFillStar } from 'react-icons/ai'
 import { FiPlayCircle } from 'react-icons/fi'
 
-const ResourceCard = ({ title }) => {
+const ResourceCard = ({ title, videos, viewers }) => {
 	const [rating, setRating] = useState(0)
 	const [hover, setHover] = useState(0)
 
@@ -33,10 +33,10 @@ const ResourceCard = ({ title }) => {
 				})}
 			</Stack>
 			<Text color='gray.300' fontSize='sm' fontWeight='bold'>
-				17 videos
+				{videos} videos
 			</Text>
 			<Text color='gray.300' fontSize='sm' fontWeight='bold'>
-				2.3k Viewers
+				{viewers} Viewers
 			</Text>
 			<Box display='flex' alignItems='center' justifyContent='flex-end'>
 				<Button

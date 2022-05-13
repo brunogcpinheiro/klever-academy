@@ -4,6 +4,7 @@ import Main from '../layouts/Main'
 import Hero from '../components/Hero'
 import SearchHeader from '../components/SearchHeader'
 import ResourcesGrid from '../components/Resources/ResourcesGrid'
+import Earn from '../components/Earn'
 
 export default function Home() {
 	return (
@@ -20,6 +21,7 @@ export default function Home() {
 					<Divider />
 					<SearchHeader />
 					<ResourcesGrid />
+					<Earn />
 				</Box>
 			</Main>
 		</Box>
