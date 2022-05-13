@@ -1,8 +1,9 @@
+import { Box, Divider } from '@chakra-ui/react'
 import Head from 'next/head'
 import Main from '../layouts/Main'
 import Hero from '../components/Hero'
-import { Box, Divider } from '@chakra-ui/react'
 import SearchHeader from '../components/SearchHeader'
+import ResourcesGrid from '../components/Resources/ResourcesGrid'
 
 export default function Home() {
 	return (
@@ -18,6 +19,7 @@ export default function Home() {
 					<Hero />
 					<Divider />
 					<SearchHeader />
+					<ResourcesGrid />
 				</Box>
 			</Main>
 		</Box>
