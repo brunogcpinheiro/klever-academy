@@ -4,14 +4,7 @@ import LearningImage from '../../assets/img/learning.svg'
 
 const Hero = () => {
 	return (
-		<Box
-			w='100%'
-			minH='calc(100vh - 60px)'
-			display='flex'
-			alignItems='center'
-			justifyContent='space-around'
-			px={16}
-		>
+		<Box w='100%' minH='550px' display='flex' alignItems='center' justifyContent='space-around' px={16}>
 			<Box alignItems='center'>
 				<Stack spacing={6} w='3xl'>
 					<Text
