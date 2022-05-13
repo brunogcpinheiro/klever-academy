@@ -27,7 +27,7 @@ const Header = () => {
 
 	return (
 		<Box>
-			<Flex bgColor='brand.background' color='white' minH='60px' py={{ base: 2 }} px={{ base: 4 }} align='center'>
+			<Flex bgColor='brand.background' color='white' minH='60px' p='10px 0' align='center'>
 				<Flex flex={{ base: 1, md: 'auto' }} ml={{ base: -2 }} display={{ base: 'flex', md: 'none' }}>
 					<IconButton
 						onClick={onToggle}
@@ -111,7 +111,7 @@ const DesktopNav = () => {
 								p={2}
 								href={navItem.href ?? '#'}
 								fontSize={'sm'}
-								fontWeight={500}
+								fontWeight={700}
 								color={linkColor}
 								textTransform='uppercase'
 								_hover={{

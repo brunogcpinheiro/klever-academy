@@ -3,12 +3,12 @@ import Header from '../components/common/Header'
 
 const Main = ({ children }) => {
 	return (
-		<>
+		<Box maxW='1440px' margin='0 auto'>
 			<Header />
-			<Box as='main' bgColor='brand.background' w='100%'>
+			<Box as='main' bgColor='brand.background' w='100%' m='0 auto'>
 				{children}
 			</Box>
-		</>
+		</Box>
 	)
 }
 

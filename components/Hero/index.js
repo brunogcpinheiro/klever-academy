@@ -12,14 +12,13 @@ const Hero = () => {
 			justifyContent='space-around'
 			px={16}
 		>
-			<Box alignItems='center' w='lg'>
-				<Stack spacing={6}>
+			<Box alignItems='center'>
+				<Stack spacing={6} w='3xl'>
 					<Text
 						fontWeight='bold'
 						lineHeight='shorter'
 						color='white'
 						as='h2'
-						w='2xl'
 						fontSize={{ base: '3xl', md: '4xl', lg: '5xl' }}
 					>
 						All You Need To Know About Crypto World
