@@ -1,4 +1,4 @@
-import { Box, Button, Input, Text } from '@chakra-ui/react'
+import { Box, Button, Input, Stack, Text } from '@chakra-ui/react'
 import { FaSearch } from 'react-icons/fa'
 
 const SearchHeader = () => {
@@ -34,19 +34,38 @@ const SearchHeader = () => {
 				</Button>
 			</Box>
 			<Box>
-				<Text
-					as='a'
-					textTransform='uppercase'
-					color='white'
-					fontWeight='bold'
-					textDecoration='underline'
-					cursor='pointer'
-					_hover={{
-						opacity: 0.8,
-					}}
-				>
-					More Viewed Courses
-				</Text>
+				<Stack direction='row' spacing={10}>
+					<Text as='span' color='white' fontWeight='bold' fontSize='sm'>
+						List by:
+					</Text>
+					<Button
+						variant='link'
+						size='sm'
+						_hover={{
+							color: 'brand.primary',
+						}}
+					>
+						Articles
+					</Button>
+					<Button
+						variant='link'
+						size='sm'
+						_hover={{
+							color: 'brand.primary',
+						}}
+					>
+						Videos
+					</Button>
+					<Button
+						variant='link'
+						size='sm'
+						_hover={{
+							color: 'brand.primary',
+						}}
+					>
+						Courses
+					</Button>
+				</Stack>
 			</Box>
 		</Box>
 	)
