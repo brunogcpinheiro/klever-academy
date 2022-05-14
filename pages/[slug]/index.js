@@ -79,9 +79,9 @@ const Slug = () => {
 							</Button>
 						</Box>
 					</Stack>
-					<Center w='full'>
+					<Box w='full'>
 						<Player />
-					</Center>
+					</Box>
 				</Stack>
 			</Main>
 		</Box>
