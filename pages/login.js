@@ -47,14 +47,14 @@ const Login = () => {
 							<InputLeftElement pointerEvents='none'>
 								<MdOutlineEmail color='white' />
 							</InputLeftElement>
-							<Input type='text' placeholder='E-mail' />
+							<Input color='white' type='text' placeholder='E-mail' />
 						</InputGroup>
 
 						<InputGroup size='md'>
 							<InputLeftElement pointerEvents='none'>
 								<FiLock color='white' />
 							</InputLeftElement>
-							<Input pr='4.5rem' type={show ? 'text' : 'password'} placeholder='Password' />
+							<Input color='white' pr='4.5rem' type={show ? 'text' : 'password'} placeholder='Password' />
 							<InputRightElement width='4.5rem'>
 								<Button variant='link' h='1.75rem' size='sm' onClick={handleClick}>
 									{show ? 'Hide' : 'Show'}
