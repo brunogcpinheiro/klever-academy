@@ -68,7 +68,7 @@ const Signup = () => {
 							<InputLeftElement pointerEvents='none'>
 								<FiLock color='white' />
 							</InputLeftElement>
-							<Input pr='4.5rem' type={show ? 'text' : 'password'} placeholder='Enter password' />
+							<Input pr='4.5rem' type={show ? 'text' : 'password'} placeholder='Password' />
 							<InputRightElement width='4.5rem'>
 								<Button variant='link' h='1.75rem' size='sm' onClick={handleClick}>
 									{show ? 'Hide' : 'Show'}

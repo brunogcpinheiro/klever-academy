@@ -4,7 +4,6 @@ import ResourceCard from '../ResourceCard'
 const ResourcesGrid = () => {
 	const resource = {
 		title: 'Introduction to Blockchain',
-		videos: '13',
 		viewers: '2.5k',
 	}
 

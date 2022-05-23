@@ -6,7 +6,7 @@ import { FiPlayCircle } from 'react-icons/fi'
 import Link from 'next/link'
 import Rating from '../../common/Rating'
 
-const ResourceCard = ({ title, videos, viewers }) => {
+const ResourceCard = ({ title, viewers }) => {
 	return (
 		<Stack bgColor='brand.secondary' w='fit-content' borderRadius='sm' p={4}>
 			<Icon as={BiMovie} color='gray.100' boxSize='10' />
@@ -14,9 +14,6 @@ const ResourceCard = ({ title, videos, viewers }) => {
 				{title}
 			</Text>
 			<Rating />
-			<Text color='gray.300' fontSize='sm' fontWeight='bold'>
-				{videos} videos
-			</Text>
 			<Text color='gray.300' fontSize='sm' fontWeight='bold'>
 				{viewers} Viewers
 			</Text>
