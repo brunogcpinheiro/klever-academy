@@ -12,7 +12,6 @@ import {
 	PopoverTrigger,
 	PopoverContent,
 	useColorModeValue,
-	useBreakpointValue,
 	useDisclosure,
 	Tooltip,
 } from '@chakra-ui/react'
@@ -60,32 +59,34 @@ const Header = () => {
 						</Tooltip>
 					</Box>
 					<SunIcon fontSize='lg' cursor='pointer' />
-					<Button
-						display={{ base: 'none', md: 'inline-flex' }}
-						fontSize='sm'
-						fontWeight={600}
-						size='sm'
-						color='white'
-						bg='brand.primary'
-						href='#'
-						borderRadius='sm'
-						_hover={{
-							opacity: 0.8,
-						}}
-					>
-						Log in
-					</Button>
-					<Button
-						as={'a'}
-						color='white'
-						fontWeight='bold'
-						fontSize={'sm'}
-						variant={'link'}
-						href={'#'}
-						_hover={{ textDecoration: 'none', opacity: 0.8 }}
-					>
-						Sign in
-					</Button>
+					<Link href='/login'>
+						<Button
+							display={{ base: 'none', md: 'inline-flex' }}
+							fontSize='sm'
+							fontWeight={600}
+							size='sm'
+							color='white'
+							bg='brand.primary'
+							href='#'
+							borderRadius='sm'
+							_hover={{
+								opacity: 0.8,
+							}}
+						>
+							Log in
+						</Button>
+					</Link>
+					<Link href='/signup'>
+						<Button
+							variant='link'
+							color='white'
+							fontWeight='bold'
+							fontSize='sm'
+							_hover={{ textDecoration: 'none', opacity: 0.8 }}
+						>
+							Sign up
+						</Button>
+					</Link>
 				</Stack>
 			</Flex>
 
