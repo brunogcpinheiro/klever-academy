@@ -59,6 +59,7 @@ const SearchHeader = () => {
 					<Button
 						variant='link'
 						size='sm'
+						disabled
 						_hover={{
 							color: 'brand.primary',
 						}}

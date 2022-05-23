@@ -143,6 +143,24 @@ const DesktopNav = () => {
 					</Popover>
 				</Box>
 			))}
+			<Box>
+				<Tooltip placement='bottom' label='Coming Soon'>
+					<Link
+						p={2}
+						fontSize={'sm'}
+						fontWeight={700}
+						color={linkColor}
+						textTransform='uppercase'
+						_hover={{
+							textDecoration: 'none',
+							color: linkHoverColor,
+							cursor: 'not-allowed',
+						}}
+					>
+						Courses
+					</Link>
+				</Tooltip>
+			</Box>
 		</Stack>
 	)
 }
@@ -234,21 +252,6 @@ const MobileNavItem = ({ label, children, href }) => {
 }
 
 const NAV_ITEMS = [
-	{
-		label: 'Courses',
-		children: [
-			{
-				label: 'Explore Design Work',
-				subLabel: 'Trending Design to inspire you',
-				href: '#',
-			},
-			{
-				label: 'New & Noteworthy',
-				subLabel: 'Up-and-coming Designers',
-				href: '#',
-			},
-		],
-	},
 	{
 		label: 'Videos',
 		children: [
