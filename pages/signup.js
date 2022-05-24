@@ -6,10 +6,40 @@ import Head from 'next/head'
 import { FiLock, FiUser } from 'react-icons/fi'
 import { MdOutlineEmail } from 'react-icons/md'
 import { useState } from 'react'
+import { useMutation } from 'react-query'
+import { createUser } from '../services/users'
+import toast from 'react-hot-toast'
 
 const Signup = () => {
 	const [show, setShow] = useState(false)
+	const [firstName, setFirstName] = useState('')
+	const [lastName, setLastName] = useState('')
+	const [email, setEmail] = useState('')
+	const [password, setPassword] = useState('')
+
 	const handleClick = () => setShow(!show)
+
+	const createUserMutation = useMutation(createUser, {
+		onSuccess: () => {
+			setFirstName('')
+			setLastName('')
+			setEmail('')
+			setPassword('')
+			toast('User created successfully!', { type: 'success' })
+		},
+		onError: error => toast(error?.message, { type: 'error' }),
+	})
+
+	const submitUser = e => {
+		e.preventDefault()
+
+		createUserMutation.mutate({
+			firstName,
+			lastName,
+			email,
+			password,
+		})
+	}
 
 	return (
 		<Box bgColor='brand.background'>
@@ -47,28 +77,53 @@ const Signup = () => {
 							<InputLeftElement pointerEvents='none'>
 								<FiUser color='white' />
 							</InputLeftElement>
-							<Input color='white' type='text' placeholder='First Name' />
+							<Input
+								color='white'
+								type='text'
+								placeholder='First Name'
+								value={firstName}
+								onChange={e => setFirstName(e.target.value)}
+							/>
 						</InputGroup>
 
 						<InputGroup>
 							<InputLeftElement pointerEvents='none'>
 								<FiUser color='white' />
 							</InputLeftElement>
-							<Input color='white' type='text' placeholder='Last Name' />
+							<Input
+								color='white'
+								type='text'
+								placeholder='Last Name'
+								value={lastName}
+								onChange={e => setLastName(e.target.value)}
+							/>
 						</InputGroup>
 
 						<InputGroup>
 							<InputLeftElement pointerEvents='none'>
 								<MdOutlineEmail color='white' />
 							</InputLeftElement>
-							<Input color='white' type='text' placeholder='E-mail' />
+							<Input
+								color='white'
+								type='text'
+								placeholder='E-mail'
+								value={email}
+								onChange={e => setEmail(e.target.value)}
+							/>
 						</InputGroup>
 
 						<InputGroup size='md'>
 							<InputLeftElement pointerEvents='none'>
 								<FiLock color='white' />
 							</InputLeftElement>
-							<Input color='white' pr='4.5rem' type={show ? 'text' : 'password'} placeholder='Password' />
+							<Input
+								color='white'
+								pr='4.5rem'
+								type={show ? 'text' : 'password'}
+								placeholder='Password'
+								value={password}
+								onChange={e => setPassword(e.target.value)}
+							/>
 							<InputRightElement width='4.5rem'>
 								<Button variant='link' h='1.75rem' size='sm' onClick={handleClick}>
 									{show ? 'Hide' : 'Show'}
@@ -83,6 +138,8 @@ const Signup = () => {
 								textTransform='uppercase'
 								w='100%'
 								_hover={{ opacity: 0.8 }}
+								onClick={e => submitUser(e)}
+								isLoading={createUserMutation.isLoading}
 							>
 								Sign Up
 							</Button>
