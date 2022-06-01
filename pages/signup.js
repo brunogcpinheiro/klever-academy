@@ -5,41 +5,25 @@ import Logo from '../assets/img/logo.svg'
 import Head from 'next/head'
 import { FiLock, FiUser } from 'react-icons/fi'
 import { MdOutlineEmail } from 'react-icons/md'
-import { useState } from 'react'
-import { useMutation } from 'react-query'
-import { createUser } from '../services/users'
-import toast from 'react-hot-toast'
+import { useCreateUser } from '../hooks/useCreateUser'
 
 const Signup = () => {
-	const [show, setShow] = useState(false)
-	const [firstName, setFirstName] = useState('')
-	const [lastName, setLastName] = useState('')
-	const [email, setEmail] = useState('')
-	const [password, setPassword] = useState('')
-
-	const handleClick = () => setShow(!show)
-
-	const createUserMutation = useMutation(createUser, {
-		onSuccess: () => {
-			setFirstName('')
-			setLastName('')
-			setEmail('')
-			setPassword('')
-			toast('User created successfully!', { type: 'success' })
-		},
-		onError: error => toast(error?.message, { type: 'error' }),
-	})
-
-	const submitUser = e => {
-		e.preventDefault()
-
-		createUserMutation.mutate({
-			firstName,
-			lastName,
-			email,
-			password,
-		})
-	}
+	const {
+		handleClick,
+		submitUser,
+		email,
+		firstName,
+		lastName,
+		username,
+		setUsername,
+		password,
+		setEmail,
+		setFirstName,
+		setLastName,
+		setPassword,
+		show,
+		loading,
+	} = useCreateUser()
 
 	return (
 		<Box bgColor='brand.background'>
@@ -101,6 +85,19 @@ const Signup = () => {
 
 						<InputGroup>
 							<InputLeftElement pointerEvents='none'>
+								<FiUser color='white' />
+							</InputLeftElement>
+							<Input
+								color='white'
+								type='text'
+								placeholder='Username'
+								value={username}
+								onChange={e => setUsername(e.target.value)}
+							/>
+						</InputGroup>
+
+						<InputGroup>
+							<InputLeftElement pointerEvents='none'>
 								<MdOutlineEmail color='white' />
 							</InputLeftElement>
 							<Input
@@ -139,7 +136,7 @@ const Signup = () => {
 								w='100%'
 								_hover={{ opacity: 0.8 }}
 								onClick={e => submitUser(e)}
-								isLoading={createUserMutation.isLoading}
+								isLoading={loading}
 							>
 								Sign Up
 							</Button>

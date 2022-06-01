@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { Box, Button, Icon, Stack, Text } from '@chakra-ui/react'
 import { BiMovie } from 'react-icons/bi'
-import { AiFillStar } from 'react-icons/ai'
 import { FiPlayCircle } from 'react-icons/fi'
 import Link from 'next/link'
 import Rating from '../../common/Rating'

@@ -4,12 +4,10 @@ import Auth from '../layouts/Auth'
 import Logo from '../assets/img/logo.svg'
 import Head from 'next/head'
 import { FiLock, FiUser } from 'react-icons/fi'
-import { MdOutlineEmail } from 'react-icons/md'
-import { useState } from 'react'
+import { useLogUser } from '../hooks/useLogUser'
 
 const Login = () => {
-	const [show, setShow] = useState(false)
-	const handleClick = () => setShow(!show)
+	const { show, handleClick, loading, submitLoginUser, username, setUsername, password, setPassword } = useLogUser()
 
 	return (
 		<Box bgColor='brand.background'>
@@ -45,16 +43,29 @@ const Login = () => {
 						</Text>
 						<InputGroup>
 							<InputLeftElement pointerEvents='none'>
-								<MdOutlineEmail color='white' />
+								<FiUser color='white' />
 							</InputLeftElement>
-							<Input color='white' type='text' placeholder='E-mail' />
+							<Input
+								color='white'
+								type='text'
+								placeholder='Username'
+								value={username}
+								onChange={e => setUsername(e.target.value)}
+							/>
 						</InputGroup>
 
 						<InputGroup size='md'>
 							<InputLeftElement pointerEvents='none'>
 								<FiLock color='white' />
 							</InputLeftElement>
-							<Input color='white' pr='4.5rem' type={show ? 'text' : 'password'} placeholder='Password' />
+							<Input
+								color='white'
+								pr='4.5rem'
+								type={show ? 'text' : 'password'}
+								placeholder='Password'
+								value={password}
+								onChange={e => setPassword(e.target.value)}
+							/>
 							<InputRightElement width='4.5rem'>
 								<Button variant='link' h='1.75rem' size='sm' onClick={handleClick}>
 									{show ? 'Hide' : 'Show'}
@@ -69,6 +80,8 @@ const Login = () => {
 								textTransform='uppercase'
 								w='100%'
 								_hover={{ opacity: 0.8 }}
+								isLoading={loading}
+								onClick={e => submitLoginUser(e)}
 							>
 								Log In
 							</Button>
