@@ -1,3 +1,4 @@
+import { localStorageManager } from '@chakra-ui/react'
 import { api } from './api'
 
 export const createUser = async payload => {
@@ -18,7 +19,23 @@ export const loginUser = async payload => {
 		password,
 	})
 
-	console.log(res)
-
 	return res
+}
+
+export const refreshLogin = async token => {
+	try {
+		const res = await api.post(
+			'/user/refresh-login',
+			{},
+			{
+				headers: {
+					Authorization: `Token ${token}`,
+				},
+			}
+		)
+
+		return res
+	} catch (error) {
+		return error
+	}
 }

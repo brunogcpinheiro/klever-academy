@@ -2,15 +2,19 @@ import { ChakraProvider } from '@chakra-ui/react'
 import { Toaster } from 'react-hot-toast'
 import '../styles/globals.css'
 import { theme } from '../styles/theme'
-import { QueryClient, QueryClientProvider } from 'react-query'
-
+import { Hydrate, QueryClient, QueryClientProvider } from 'react-query'
+import AuthProvider from '../context/Auth'
 const queryClient = new QueryClient()
 
 function MyApp({ Component, pageProps }) {
 	return (
 		<QueryClientProvider client={queryClient}>
 			<ChakraProvider resetCSS theme={theme}>
-				<Component {...pageProps} />
+				<AuthProvider>
+					<Hydrate>
+						<Component {...pageProps} />
+					</Hydrate>
+				</AuthProvider>
 				<Toaster />
 			</ChakraProvider>
 		</QueryClientProvider>

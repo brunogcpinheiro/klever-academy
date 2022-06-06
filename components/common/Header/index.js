@@ -17,12 +17,39 @@ import {
 } from '@chakra-ui/react'
 import { HamburgerIcon, CloseIcon, ChevronDownIcon, ChevronRightIcon, SunIcon } from '@chakra-ui/icons'
 import Image from 'next/image'
+import { useRouter } from 'next/router'
 import Logo from '../../../assets/img/logo.svg'
 import BrazilImage from '../../../assets/img/brazil.png'
 import USAImage from '../../../assets/img/usa.png'
+import { useAuth } from '../../../context/Auth'
+import { useEffect } from 'react'
+import { refreshLogin } from '../../../services/users'
+import toast from 'react-hot-toast'
 
 const Header = () => {
+	const router = useRouter()
 	const { isOpen, onToggle } = useDisclosure()
+	const { user, setUser } = useAuth()
+
+	useEffect(() => {
+		if (localStorage.getItem('klever-academy:token')) {
+			const ref = async () => {
+				const r = await refreshLogin(localStorage.getItem('klever-academy:token'))
+				if (r?.response?.status === 401) {
+					localStorage.removeItem('klever-academy:token')
+					setUser({})
+					router.push('/login')
+					return toast('Session expired! Please login again!')
+				}
+
+				setUser({ ...r?.data?.userInfo })
+				return r
+			}
+			ref()
+		} else {
+			return setUser({})
+		}
+	}, [router, setUser])
 
 	return (
 		<Box>
@@ -59,34 +86,45 @@ const Header = () => {
 						</Tooltip>
 					</Box>
 					<SunIcon fontSize='lg' cursor='pointer' />
-					<Link href='/login'>
-						<Button
-							display={{ base: 'none', md: 'inline-flex' }}
-							fontSize='sm'
-							fontWeight={600}
-							size='sm'
-							color='white'
-							bg='brand.primary'
-							href='#'
-							borderRadius='sm'
-							_hover={{
-								opacity: 0.8,
-							}}
-						>
-							Log in
-						</Button>
-					</Link>
-					<Link href='/signup'>
-						<Button
-							variant='link'
-							color='white'
-							fontWeight='bold'
-							fontSize='sm'
-							_hover={{ textDecoration: 'none', opacity: 0.8 }}
-						>
-							Sign up
-						</Button>
-					</Link>
+					{Object.keys(user).length === 0 ? (
+						<>
+							<Link href='/login'>
+								<Button
+									display={{ base: 'none', md: 'inline-flex' }}
+									fontSize='sm'
+									fontWeight={600}
+									size='sm'
+									color='white'
+									bg='brand.primary'
+									href='#'
+									borderRadius='sm'
+									_hover={{
+										opacity: 0.8,
+									}}
+								>
+									Log in
+								</Button>
+							</Link>
+							<Link href='/signup'>
+								<Button
+									variant='link'
+									color='white'
+									fontWeight='bold'
+									fontSize='sm'
+									_hover={{ textDecoration: 'none', opacity: 0.8 }}
+								>
+									Sign up
+								</Button>
+							</Link>
+						</>
+					) : (
+						<Box display='flex' alignItems='center'>
+							<Text fontWeight='bold'>Hello, {user?.firstName || '...'}!</Text>
+							<Button size='xs' ml={4} bgColor='brand.primary' _hover={{ opacity: 0.8 }}>
+								Logout
+							</Button>
+						</Box>
+					)}
 				</Stack>
 			</Flex>
 
