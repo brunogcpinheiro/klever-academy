@@ -1,4 +1,3 @@
-import { localStorageManager } from '@chakra-ui/react'
 import { api } from './api'
 
 export const createUser = async payload => {

@@ -4,17 +4,18 @@ import { BiMovie } from 'react-icons/bi'
 import { FiPlayCircle } from 'react-icons/fi'
 import Link from 'next/link'
 import Rating from '../../common/Rating'
+import { truncate } from '../../../utils'
 
-const ResourceCard = ({ title, viewers }) => {
+const ResourceCard = ({ title, description, rate }) => {
 	return (
 		<Stack bgColor='brand.secondary' w='fit-content' borderRadius='sm' p={4}>
 			<Icon as={BiMovie} color='gray.100' boxSize='10' />
 			<Text color='gray.100' fontSize='sm' fontWeight='bold'>
 				{title}
 			</Text>
-			<Rating />
+			<Rating rate={rate} />
 			<Text color='gray.300' fontSize='sm' fontWeight='bold'>
-				{viewers} Viewers
+				{truncate(description, 50)}
 			</Text>
 			<Link href='/introduction-to-blockchain'>
 				<Box display='flex' alignItems='center' justifyContent='flex-end'>
