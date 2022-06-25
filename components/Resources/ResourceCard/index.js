@@ -6,18 +6,25 @@ import Link from 'next/link'
 import Rating from '../../common/Rating'
 import { truncate } from '../../../utils'
 
-const ResourceCard = ({ title, description, rate }) => {
+const ResourceCard = ({ id, title, description, rate }) => {
+	const slugify = text => {
+		return text
+			.toLowerCase()
+			.replace(/ /g, '-')
+			.replace(/[^\w-]+/g, '')
+	}
+
 	return (
-		<Stack bgColor='brand.secondary' w='fit-content' borderRadius='sm' p={4}>
+		<Stack bgColor='brand.secondary' borderRadius='sm' p={4} h='72' w='fit-content' justifyContent='space-between'>
 			<Icon as={BiMovie} color='gray.100' boxSize='10' />
-			<Text color='gray.100' fontSize='sm' fontWeight='bold'>
-				{title}
+			<Text color='gray.100' fontSize='sm' fontWeight='bold' mb={2}>
+				{truncate(title, 35)}
 			</Text>
 			<Rating rate={rate} />
-			<Text color='gray.300' fontSize='sm' fontWeight='bold'>
+			<Text flex='1' color='gray.300' fontSize='sm' fontWeight='bold'>
 				{truncate(description, 50)}
 			</Text>
-			<Link href='/introduction-to-blockchain'>
+			<Link href={`/videos/${slugify(title)}--${id}`}>
 				<Box display='flex' alignItems='center' justifyContent='flex-end'>
 					<Button
 						bgColor='brand.accent'

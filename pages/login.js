@@ -4,7 +4,7 @@ import Auth from '../layouts/Auth'
 import Logo from '../assets/img/logo.svg'
 import Head from 'next/head'
 import { FiLock, FiUser } from 'react-icons/fi'
-import { useLoginUser } from '../hooks/useLoginUser'
+import { useLoginUser } from '../hooks/auth/useLoginUser'
 
 const Login = () => {
 	const { show, handleClick, loading, submitLoginUser, username, setUsername, password, setPassword } = useLoginUser()

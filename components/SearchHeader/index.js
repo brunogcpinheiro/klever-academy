@@ -45,7 +45,7 @@ const SearchHeader = () => {
 							color: 'brand.primary',
 						}}
 					>
-						Articles
+						Videos
 					</Button>
 					<Button
 						variant='link'
@@ -54,7 +54,7 @@ const SearchHeader = () => {
 							color: 'brand.primary',
 						}}
 					>
-						Videos
+						Articles
 					</Button>
 					<Button
 						variant='link'

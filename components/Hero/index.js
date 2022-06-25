@@ -35,7 +35,7 @@ const Hero = () => {
 				</Stack>
 			</Box>
 			<Box>
-				<Box w='2xl'>
+				<Box w='xl'>
 					<Image alt='Hero Image' objectFit='cover' src={LearningImage} />
 				</Box>
 			</Box>

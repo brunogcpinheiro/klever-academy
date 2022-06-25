@@ -25,6 +25,7 @@ import { useAuth } from '../../../context/Auth'
 import { useEffect } from 'react'
 import { refreshLogin } from '../../../services/users'
 import toast from 'react-hot-toast'
+import NextLink from 'next/link'
 
 const Header = () => {
 	const router = useRouter()
@@ -43,6 +44,7 @@ const Header = () => {
 				}
 
 				setUser({ ...r?.data?.userInfo })
+				if (location.pathname === '/login') router.push('/')
 				return r
 			}
 			ref()
@@ -63,8 +65,10 @@ const Header = () => {
 					/>
 				</Flex>
 				<Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
-					<Link href='/' mt='-5px'>
-						<Image width='150px' alt='Klever Academy Logo' src={Logo} />
+					<Link as={NextLink} href='/'>
+						<Box cursor='pointer'>
+							<Image mt='-5px' width='150px' alt='Klever Academy Logo' src={Logo} />
+						</Box>
 					</Link>
 
 					<Flex display={{ base: 'none', md: 'flex' }} ml={10}>
@@ -88,7 +92,7 @@ const Header = () => {
 					<SunIcon fontSize='lg' cursor='pointer' />
 					{Object.keys(user).length === 0 ? (
 						<>
-							<Link href='/login'>
+							<Link as={NextLink} href='/login'>
 								<Button
 									display={{ base: 'none', md: 'inline-flex' }}
 									fontSize='sm'
@@ -96,7 +100,6 @@ const Header = () => {
 									size='sm'
 									color='white'
 									bg='brand.primary'
-									href='#'
 									borderRadius='sm'
 									_hover={{
 										opacity: 0.8,
@@ -105,7 +108,7 @@ const Header = () => {
 									Log in
 								</Button>
 							</Link>
-							<Link href='/signup'>
+							<Link as={NextLink} href='/signup'>
 								<Button
 									variant='link'
 									color='white'
@@ -138,52 +141,32 @@ const Header = () => {
 const DesktopNav = () => {
 	const linkColor = 'white'
 	const linkHoverColor = 'gray.200'
-	const popoverContentBgColor = 'brand.secondary'
 
 	return (
 		<Stack direction={'row'} spacing={4}>
 			{NAV_ITEMS.map(navItem => (
 				<Box key={navItem.label}>
-					<Popover trigger={'hover'} placement={'bottom-start'}>
-						<PopoverTrigger>
-							<Link
-								p={2}
-								href={navItem.href ?? '#'}
-								fontSize={'sm'}
-								fontWeight={700}
-								color={linkColor}
-								textTransform='uppercase'
-								_hover={{
-									textDecoration: 'none',
-									color: linkHoverColor,
-								}}
-							>
-								{navItem.label}
-							</Link>
-						</PopoverTrigger>
-
-						{navItem.children && (
-							<PopoverContent
-								border={0}
-								boxShadow={'xl'}
-								bg={popoverContentBgColor}
-								p={4}
-								rounded={'xl'}
-								minW={'sm'}
-							>
-								<Stack>
-									{navItem.children.map(child => (
-										<DesktopSubNav key={child.label} {...child} />
-									))}
-								</Stack>
-							</PopoverContent>
-						)}
-					</Popover>
+					<Link href={navItem?.href} as={NextLink}>
+						<Text
+							p={2}
+							fontSize={'sm'}
+							fontWeight={700}
+							color={linkColor}
+							textTransform='uppercase'
+							cursor='pointer'
+							_hover={{
+								textDecoration: 'none',
+								color: linkHoverColor,
+							}}
+						>
+							{navItem.label}
+						</Text>
+					</Link>
 				</Box>
 			))}
 			<Box>
 				<Tooltip placement='bottom' label='Coming Soon'>
-					<Link
+					<Text
 						p={2}
 						fontSize={'sm'}
 						fontWeight={700}
@@ -196,36 +179,10 @@ const DesktopNav = () => {
 						}}
 					>
 						Courses
-					</Link>
+					</Text>
 				</Tooltip>
 			</Box>
 		</Stack>
-	)
-}
-
-const DesktopSubNav = ({ label, href, subLabel }) => {
-	return (
-		<Link href={href} role={'group'} display={'block'} p={2} rounded={'md'} _hover={{ opacity: 0.8 }}>
-			<Stack direction={'row'} align={'center'}>
-				<Box>
-					<Text transition={'all .3s ease'} _groupHover={{ color: 'brand.primary' }} fontWeight={500}>
-						{label}
-					</Text>
-					<Text fontSize={'sm'}>{subLabel}</Text>
-				</Box>
-				<Flex
-					transition={'all .3s ease'}
-					transform={'translateX(-10px)'}
-					opacity={0}
-					_groupHover={{ opacity: '100%', transform: 'translateX(0)' }}
-					justify={'flex-end'}
-					align={'center'}
-					flex={1}
-				>
-					<Icon color={'brand.primary'} w={5} h={5} as={ChevronRightIcon} />
-				</Flex>
-			</Stack>
-		</Link>
 	)
 }
 
@@ -243,11 +200,11 @@ const MobileNavItem = ({ label, children, href }) => {
 	const { isOpen, onToggle } = useDisclosure()
 
 	return (
-		<Stack spacing={4} onClick={children && onToggle}>
+		<Stack spacing={4} onClick={onToggle}>
 			<Flex
 				py={2}
 				as={Link}
-				href={href ?? '#'}
+				href={href}
 				justify={'space-between'}
 				align={'center'}
 				_hover={{
@@ -257,34 +214,7 @@ const MobileNavItem = ({ label, children, href }) => {
 				<Text fontWeight={600} color={useColorModeValue('gray.600', 'gray.200')}>
 					{label}
 				</Text>
-				{children && (
-					<Icon
-						as={ChevronDownIcon}
-						transition={'all .25s ease-in-out'}
-						transform={isOpen ? 'rotate(180deg)' : ''}
-						w={6}
-						h={6}
-					/>
-				)}
 			</Flex>
-
-			<Collapse in={isOpen} animateOpacity style={{ marginTop: '0!important' }}>
-				<Stack
-					mt={2}
-					pl={4}
-					borderLeft={1}
-					borderStyle={'solid'}
-					borderColor={useColorModeValue('gray.200', 'gray.700')}
-					align={'start'}
-				>
-					{children &&
-						children.map(child => (
-							<Link key={child.label} py={2} href={child.href}>
-								{child.label}
-							</Link>
-						))}
-				</Stack>
-			</Collapse>
 		</Stack>
 	)
 }
@@ -292,22 +222,11 @@ const MobileNavItem = ({ label, children, href }) => {
 const NAV_ITEMS = [
 	{
 		label: 'Videos',
-		children: [
-			{
-				label: 'Job Board',
-				subLabel: 'Find your dream design job',
-				href: '#',
-			},
-			{
-				label: 'Freelance Projects',
-				subLabel: 'An exclusive list for contract work',
-				href: '#',
-			},
-		],
+		href: '/videos',
 	},
 	{
 		label: 'Articles',
-		href: '#',
+		href: '/articles',
 	},
 ]
 

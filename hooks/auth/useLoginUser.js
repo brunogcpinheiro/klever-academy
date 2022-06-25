@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { useMutation } from 'react-query'
-import { loginUser } from '../services/users'
+import { loginUser } from '../../services/users'
 import toast from 'react-hot-toast'
 import { useRouter } from 'next/router'
-import { useAuth } from '../context/Auth'
+import { useAuth } from '../../context/Auth'
 
 export const useLoginUser = () => {
 	const router = useRouter()

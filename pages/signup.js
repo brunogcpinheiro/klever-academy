@@ -5,7 +5,7 @@ import Logo from '../assets/img/logo.svg'
 import Head from 'next/head'
 import { FiLock, FiUser } from 'react-icons/fi'
 import { MdOutlineEmail } from 'react-icons/md'
-import { useCreateUser } from '../hooks/useCreateUser'
+import { useCreateUser } from '../hooks/auth/useCreateUser'
 
 const Signup = () => {
 	const {

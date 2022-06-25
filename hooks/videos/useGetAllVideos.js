@@ -1,13 +1,12 @@
-import { useState } from 'react'
 import { useQuery } from 'react-query'
-import toast from 'react-hot-toast'
-import { getAllVideos } from '../services/videos'
+import { getAllVideos } from '../../services/videos'
 
 export const useGetAllVideos = () => {
 	const { isLoading, data } = useQuery('allVideos', getAllVideos)
+	const sortedData = data?.sort((a, b) => a.id - b.id)
 
 	return {
-		videos: data,
+		videos: sortedData,
 		isLoading,
 	}
 }

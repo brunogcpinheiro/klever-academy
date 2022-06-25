@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useMutation } from 'react-query'
-import { createUser } from '../services/users'
+import { createUser } from '../../services/users'
 import toast from 'react-hot-toast'
 
 export const useCreateUser = () => {

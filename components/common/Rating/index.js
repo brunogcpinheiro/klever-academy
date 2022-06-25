@@ -27,7 +27,7 @@ const Rating = ({ rate }) => {
 				})}
 			</Stack>
 			<Box display='flex' alignItems='center' mt={2}>
-				<AiFillStar color='yellow.200' size='10' />
+				<AiFillStar color='yellow' size='10' />
 				<Text color='yellow.200' ml={1} fontSize='xs'>
 					{rate}
 				</Text>
