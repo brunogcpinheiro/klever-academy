@@ -1,8 +1,7 @@
-import { Box, Button, Center, Flex, Image, Stack, Text } from '@chakra-ui/react'
-import { FiPlayCircle } from 'react-icons/fi'
-import Banner from '../Banner'
-import Rating from '../common/Rating'
-import Player from '../Player'
+import { Box, Stack, Text } from '@chakra-ui/react'
+import Banner from '../../Banner'
+import Rating from '../../common/Rating'
+import Player from '../../Player'
 
 const Video = ({ video }) => {
 	return (

@@ -1,6 +1,6 @@
 import { Box } from '@chakra-ui/react'
 import Head from 'next/head'
-import Video from '../../../components/Video'
+import Video from '../../../components/Videos/Video'
 import { useGetVideo } from '../../../hooks/videos/useGetVideo'
 import Main from '../../../layouts/Main'
 import { useRouter } from 'next/router'
