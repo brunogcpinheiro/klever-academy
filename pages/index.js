@@ -1,10 +1,10 @@
-import { Box, Divider } from '@chakra-ui/react'
+import { Box, Button, Divider, Flex, Link, Text } from '@chakra-ui/react'
 import Head from 'next/head'
 import Main from '../layouts/Main'
 import Hero from '../components/Hero'
-import SearchHeader from '../components/SearchHeader'
 import ResourcesGrid from '../components/Resources/ResourcesGrid'
 import Earn from '../components/Earn'
+import NextLink from 'next/link'
 
 export default function Home() {
 	return (
@@ -19,8 +19,28 @@ export default function Home() {
 				<Box>
 					<Hero />
 					<Divider />
-					<SearchHeader />
+					<Text color='white' fontSize='3xl' my={6} fontWeight='bold'>
+						Featured Content
+					</Text>
 					<ResourcesGrid />
+					<Flex justifyContent='center' mt={10}>
+						<NextLink href='/explore' passHref>
+							<Link
+								rounded='sm'
+								bg='brand.primary'
+								color='white'
+								fontWeight='bold'
+								textTransform='uppercase'
+								px={6}
+								py={4}
+								_hover={{
+									opacity: 0.8,
+								}}
+							>
+								Explore All Content
+							</Link>
+						</NextLink>
+					</Flex>
 					<Earn />
 				</Box>
 			</Main>

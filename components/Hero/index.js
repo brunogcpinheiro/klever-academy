@@ -1,5 +1,6 @@
-import { Box, Button, Stack, Text } from '@chakra-ui/react'
+import { Box, Button, Link, Stack, Text } from '@chakra-ui/react'
 import Image from 'next/image'
+import NextLink from 'next/link'
 import LearningImage from '../../assets/img/learning.svg'
 
 const Hero = () => {
@@ -14,23 +15,29 @@ const Hero = () => {
 						as='h2'
 						fontSize={{ base: '3xl', md: '4xl', lg: '5xl' }}
 					>
-						All You Need To Know About Crypto World
+						All You Need To Know About Crypto and Klever World
 					</Text>
 					<Text fontSize='sm' color='white'>
 						Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
 						the industrys standard dummy text.
 					</Text>
 					<Stack direction={{ base: 'column', md: 'row' }} spacing={4}>
-						<Button
-							rounded='sm'
-							bg='brand.primary'
-							color='white'
-							_hover={{
-								opacity: 0.8,
-							}}
-						>
-							Explore
-						</Button>
+						<NextLink href='/explore' passHref>
+							<Link
+								rounded='sm'
+								bg='brand.primary'
+								fontWeight='bold'
+								textTransform='uppercase'
+								px={4}
+								py={2}
+								color='white'
+								_hover={{
+									opacity: 0.8,
+								}}
+							>
+								Explore
+							</Link>
+						</NextLink>
 					</Stack>
 				</Stack>
 			</Box>

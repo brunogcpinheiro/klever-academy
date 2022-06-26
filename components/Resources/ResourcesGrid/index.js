@@ -5,7 +5,7 @@ import { useGetAllVideos } from '../../../hooks/videos/useGetAllVideos'
 import { Loader } from '../../common/Loader'
 
 const ResourcesGrid = () => {
-	const { isLoading, videos } = useGetAllVideos()
+	const { isLoading, featuredVideos } = useGetAllVideos()
 
 	return (
 		<>
@@ -15,7 +15,7 @@ const ResourcesGrid = () => {
 				</Box>
 			) : (
 				<Grid templateColumns='repeat(6, 1fr)' gap={4}>
-					{videos.map(video => (
+					{featuredVideos.map(video => (
 						<ResourceCard key={video.id} {...video} />
 					))}
 				</Grid>

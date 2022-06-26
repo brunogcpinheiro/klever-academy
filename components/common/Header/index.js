@@ -6,11 +6,7 @@ import {
 	Button,
 	Stack,
 	Collapse,
-	Icon,
 	Link,
-	Popover,
-	PopoverTrigger,
-	PopoverContent,
 	useColorModeValue,
 	useDisclosure,
 	Tooltip,
@@ -65,11 +61,13 @@ const Header = () => {
 					/>
 				</Flex>
 				<Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
-					<Link as={NextLink} href='/'>
-						<Box cursor='pointer'>
-							<Image mt='-5px' width='150px' alt='Klever Academy Logo' src={Logo} />
-						</Box>
-					</Link>
+					<NextLink href='/' passHref>
+						<Link>
+							<Box cursor='pointer'>
+								<Image mt='-5px' width='150px' alt='Klever Academy Logo' src={Logo} />
+							</Box>
+						</Link>
+					</NextLink>
 
 					<Flex display={{ base: 'none', md: 'flex' }} ml={10}>
 						<DesktopNav />
@@ -92,24 +90,26 @@ const Header = () => {
 					<SunIcon fontSize='lg' cursor='pointer' />
 					{Object.keys(user).length === 0 ? (
 						<>
-							<Link as={NextLink} href='/login'>
-								<Button
+							<NextLink href='/login' passHref>
+								<Link
 									display={{ base: 'none', md: 'inline-flex' }}
 									fontSize='sm'
 									fontWeight={600}
 									size='sm'
 									color='white'
 									bg='brand.primary'
+									px={2}
+									py={1}
 									borderRadius='sm'
 									_hover={{
 										opacity: 0.8,
 									}}
 								>
 									Log in
-								</Button>
-							</Link>
-							<Link as={NextLink} href='/signup'>
-								<Button
+								</Link>
+							</NextLink>
+							<NextLink href='/signup' passHref>
+								<Link
 									variant='link'
 									color='white'
 									fontWeight='bold'
@@ -117,8 +117,8 @@ const Header = () => {
 									_hover={{ textDecoration: 'none', opacity: 0.8 }}
 								>
 									Sign up
-								</Button>
-							</Link>
+								</Link>
+							</NextLink>
 						</>
 					) : (
 						<Box display='flex' alignItems='center'>
@@ -146,22 +146,24 @@ const DesktopNav = () => {
 		<Stack direction={'row'} spacing={4}>
 			{NAV_ITEMS.map(navItem => (
 				<Box key={navItem.label}>
-					<Link href={navItem?.href} as={NextLink}>
-						<Text
-							p={2}
-							fontSize={'sm'}
-							fontWeight={700}
-							color={linkColor}
-							textTransform='uppercase'
-							cursor='pointer'
-							_hover={{
-								textDecoration: 'none',
-								color: linkHoverColor,
-							}}
-						>
-							{navItem.label}
-						</Text>
-					</Link>
+					<NextLink href={navItem?.href} passHref>
+						<Link>
+							<Text
+								p={2}
+								fontSize={'sm'}
+								fontWeight={700}
+								color={linkColor}
+								textTransform='uppercase'
+								cursor='pointer'
+								_hover={{
+									textDecoration: 'none',
+									color: linkHoverColor,
+								}}
+							>
+								{navItem.label}
+							</Text>
+						</Link>
+					</NextLink>
 				</Box>
 			))}
 			<Box>
@@ -220,6 +222,10 @@ const MobileNavItem = ({ label, children, href }) => {
 }
 
 const NAV_ITEMS = [
+	{
+		label: 'Explore',
+		href: '/explore',
+	},
 	{
 		label: 'Videos',
 		href: '/videos',
