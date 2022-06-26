@@ -8,7 +8,7 @@ const Video = ({ video }) => {
 	return (
 		<Stack spacing={6}>
 			<Box>
-				<Banner image='/img/eth.jpg' />
+				<Banner image={video?.thumbnail_url} />
 			</Box>
 			<Box>
 				<Text fontSize='5xl' fontWeight='bold' color='white'>
@@ -20,14 +20,9 @@ const Video = ({ video }) => {
 					Overview
 				</Text>
 				<Text fontSize='md' color='white'>
-					Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-					industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type
-					and scrambled it to make a type specimen book. It has survived not only five centuries, but also the
-					leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s
-					with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
-					publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+					{video?.description}
 				</Text>
-				<Rating />
+				<Rating rate={video?.rate} />
 				<Stack>
 					<Stack direction='row'>
 						<Text fontWeight='bold' color='white' fontSize='sm'>
@@ -37,14 +32,14 @@ const Video = ({ video }) => {
 							Klever
 						</Text>
 					</Stack>
-					<Stack direction='row'>
+					{/* <Stack direction='row'>
 						<Text fontWeight='bold' color='white' fontSize='sm'>
 							Category:
 						</Text>
 						<Text color='white' fontSize='sm'>
 							Blockchain
 						</Text>
-					</Stack>
+					</Stack> */}
 					<Stack direction='row'>
 						<Text fontWeight='bold' color='white' fontSize='sm'>
 							Reward:
@@ -54,7 +49,7 @@ const Video = ({ video }) => {
 						</Text>
 					</Stack>
 				</Stack>
-				<Box>
+				{/* <Box>
 					<Button
 						bgColor='brand.primary'
 						color='white'
@@ -66,10 +61,10 @@ const Video = ({ video }) => {
 					>
 						Start Now
 					</Button>
-				</Box>
+				</Box> */}
 			</Stack>
 			<Box w='full'>
-				<Player />
+				<Player videoUrl={video?.video_url} />
 			</Box>
 		</Stack>
 	)
