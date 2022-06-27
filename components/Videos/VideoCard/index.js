@@ -1,11 +1,11 @@
 import Image from 'next/image'
 import NextLink from 'next/link'
+import dayjs from 'dayjs'
 import { Box, Center, Heading, Text, Stack, Avatar, Link } from '@chakra-ui/react'
 import Logo from '../../../assets/img/logo.svg'
 import { truncate, slugify } from '../../../utils'
 
 const VideoCard = ({ video }) => {
-	console.log(video)
 	return (
 		<Center py={6}>
 			<NextLink href={`/videos/${slugify(video?.title)}--${video?.id}`} passHref>
@@ -47,7 +47,7 @@ const VideoCard = ({ video }) => {
 								<Text fontWeight={600} color='gray.300'>
 									Klever
 								</Text>
-								<Text color='white'>Feb 08, 2021</Text>
+								<Text color='white'>{dayjs(video?.published_at).format('MMM DD, YYYY')}</Text>
 							</Stack>
 						</Stack>
 					</Box>

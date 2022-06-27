@@ -1,4 +1,5 @@
-import { Box, Button, Stack, Text } from '@chakra-ui/react'
+import { Box, Link, Text } from '@chakra-ui/react'
+import NextLink from 'next/link'
 import Image from 'next/image'
 import { MdOutlineAttachMoney } from 'react-icons/md'
 import EarnImage from '../../assets/img/earn.svg'
@@ -23,17 +24,24 @@ const Earn = () => {
 				<Text fontWeight='bold' fontSize='xl' color='white'>
 					Build your blockchain knowledge, complete quizzes and earn free cryptocurrencies.
 				</Text>
-				<Button
-					leftIcon={<MdOutlineAttachMoney size={20} />}
-					mt={4}
-					bgColor='brand.primary'
-					color='white'
-					textTransform='uppercase'
-					fontWeight='bold'
-					_hover={{ opacity: 0.8 }}
-				>
-					Earn Now
-				</Button>
+				<NextLink href='/earn' passHref>
+					<Link
+						mt={6}
+						bgColor='brand.primary'
+						color='white'
+						textTransform='uppercase'
+						fontWeight='bold'
+						px={4}
+						py={2}
+						display='flex'
+						borderRadius='sm'
+						w='fit-content'
+						_hover={{ opacity: 0.8 }}
+					>
+						<MdOutlineAttachMoney size={20} />
+						Earn Now
+					</Link>
+				</NextLink>
 			</Box>
 			<Box w='300px'>
 				<Image src={EarnImage} alt='Earn' />

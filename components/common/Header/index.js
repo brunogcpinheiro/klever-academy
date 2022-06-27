@@ -16,7 +16,7 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import Logo from '../../../assets/img/logo.svg'
 import BrazilImage from '../../../assets/img/brazil.webp'
-import USAImage from '../../../assets/img/usa.webp'
+// import USAImage from '../../../assets/img/usa.webp'
 import { useAuth } from '../../../context/Auth'
 import { useEffect } from 'react'
 import { refreshLogin } from '../../../services/users'
@@ -75,7 +75,7 @@ const Header = () => {
 				</Flex>
 
 				<Stack justify='flex-end' direction='row' alignItems='center' spacing={6}>
-					<Box display='flex' alignItems='center' w='70px'>
+					{/* <Box display='flex' alignItems='center' w='70px'>
 						<Tooltip label='EN-US'>
 							<Box cursor='pointer' mx={1} mt={1}>
 								<Image w='20px' src={USAImage} alt='en-us' />
@@ -86,7 +86,7 @@ const Header = () => {
 								<Image w='20px' src={BrazilImage} alt='pt-br' />
 							</Box>
 						</Tooltip>
-					</Box>
+					</Box> */}
 					<SunIcon fontSize='lg' cursor='pointer' />
 					{Object.keys(user).length === 0 ? (
 						<>

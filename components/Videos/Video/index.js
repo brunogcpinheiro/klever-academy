@@ -1,16 +1,20 @@
 import { Box, Stack, Text } from '@chakra-ui/react'
+import dayjs from 'dayjs'
 import Rating from '../../common/Rating'
 import Player from '../../Player'
 
 const Video = ({ video }) => {
 	return (
-		<Stack spacing={6} mt={10}>
+		<Stack spacing={6} mt={10} maxW='990px' mx='auto'>
 			<Box>
 				<Text fontSize='5xl' fontWeight='bold' color='white'>
 					{video?.title}
 				</Text>
 			</Box>
 			<Stack>
+				<Text fontSize='md' color='white' fontStyle='italic'>
+					Published At: {dayjs(video?.published_at).format('MMM DD, YYYY')}
+				</Text>
 				<Text fontSize='xl' color='white' fontWeight='bold'>
 					Overview
 				</Text>
