@@ -1,7 +1,7 @@
 import { Box, Text } from '@chakra-ui/react'
 import Head from 'next/head'
 import Main from '../layouts/Main'
-import NotFoundImage from '../assets/img/page-not-found.png'
+import NotFoundImage from '../assets/img/page-not-found.webp'
 import Image from 'next/image'
 
 export default function NotFound() {

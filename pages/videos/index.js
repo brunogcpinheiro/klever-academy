@@ -2,8 +2,12 @@ import { Box, Text } from '@chakra-ui/react'
 import Head from 'next/head'
 import Main from '../../layouts/Main'
 import Videos from '../../components/Videos'
+import { useGetAllVideos } from '../../hooks/videos/useGetAllVideos'
+import { Loader } from '../../components/common/Loader'
 
 const VideosPage = () => {
+	const { videos, isLoading } = useGetAllVideos()
+
 	return (
 		<Box bgColor='brand.background'>
 			<Head>
@@ -13,7 +17,13 @@ const VideosPage = () => {
 			</Head>
 
 			<Main>
-				<Videos />
+				{isLoading ? (
+					<Box h='calc(100vh - 305px)' display={'flex'} alignItems={'center'} justifyContent={'center'}>
+						<Loader />
+					</Box>
+				) : (
+					<Videos videos={videos} />
+				)}
 			</Main>
 		</Box>
 	)

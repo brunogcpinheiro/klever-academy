@@ -1,56 +1,58 @@
 import Image from 'next/image'
-import { Box, Center, Heading, Text, Stack, Avatar } from '@chakra-ui/react'
+import NextLink from 'next/link'
+import { Box, Center, Heading, Text, Stack, Avatar, Link } from '@chakra-ui/react'
 import Logo from '../../../assets/img/logo.svg'
+import { truncate, slugify } from '../../../utils'
 
-const VideoCard = () => {
+const VideoCard = ({ video }) => {
+	console.log(video)
 	return (
 		<Center py={6}>
-			<Box
-				maxW={'445px'}
-				w={'full'}
-				bg='brand.secondary'
-				boxShadow={'2xl'}
-				rounded={'md'}
-				p={6}
-				overflow={'hidden'}
-				_hover={{ outline: '2px solid', outlineColor: 'brand.primary', cursor: 'pointer' }}
-			>
-				<Box h={'210px'} bg={'gray.100'} mt={-6} mx={-6} mb={6} pos={'relative'}>
-					<Image src={Logo} layout={'fill'} alt='' />
-				</Box>
-				<Stack>
-					<Text
-						color={'brand.primary'}
-						textTransform={'uppercase'}
-						fontWeight={800}
-						fontSize={'sm'}
-						letterSpacing={1.1}
+			<NextLink href={`/videos/${slugify(video?.title)}--${video?.id}`} passHref>
+				<Link>
+					<Box
+						maxW={'445px'}
+						w={'full'}
+						bg='brand.secondary'
+						h={'600px'}
+						boxShadow={'2xl'}
+						rounded={'md'}
+						display={'flex'}
+						flexDirection={'column'}
+						justifyContent={'space-between'}
+						overflow={'hidden'}
+						_hover={{ outline: '2px solid', outlineColor: 'brand.primary', cursor: 'pointer' }}
 					>
-						Blog
-					</Text>
-					<Heading color='white' fontSize={'2xl'} fontFamily={'body'}>
-						Boost your conversion rate
-					</Heading>
-					<Text color='white'>
-						Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
-						ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo
-						dolores et ea rebum.
-					</Text>
-				</Stack>
-				<Stack mt={6} direction={'row'} spacing={4} align={'center'}>
-					<Avatar
-						bg={'white'}
-						src={'https://s2.coinmarketcap.com/static/img/coins/200x200/6724.png'}
-						alt={'Author'}
-					/>
-					<Stack direction={'column'} spacing={0} fontSize={'sm'}>
-						<Text fontWeight={600} color='gray.300'>
-							Klever
-						</Text>
-						<Text color='white'>Feb 08, 2021</Text>
-					</Stack>
-				</Stack>
-			</Box>
+						<Box
+							h={'250px'}
+							bg={'transparent'}
+							mt={-6}
+							mb={6}
+							w='full'
+							pos={'relative'}
+							borderBottom={'1px solid'}
+							borderBottomColor={'gray.600'}
+						>
+							<Image src={video?.thumbnail_url || Logo} layout={'fill'} alt='' />
+						</Box>
+						<Stack p={6} flex={'1'}>
+							<Heading color='white' fontSize={'2xl'} fontFamily={'body'}>
+								{video?.title || ''}
+							</Heading>
+							<Text color='white'>{truncate(video?.description, 200) || ''}</Text>
+						</Stack>
+						<Stack direction={'row'} spacing={4} align={'center'} p={6}>
+							<Avatar bg={'white'} src={'/img/klever.webp'} alt={'Author'} />
+							<Stack direction={'column'} spacing={0} fontSize={'sm'}>
+								<Text fontWeight={600} color='gray.300'>
+									Klever
+								</Text>
+								<Text color='white'>Feb 08, 2021</Text>
+							</Stack>
+						</Stack>
+					</Box>
+				</Link>
+			</NextLink>
 		</Center>
 	)
 }

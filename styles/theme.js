@@ -39,4 +39,14 @@ const styles = {
 	},
 }
 
-export const theme = extendTheme({ colors, fonts, styles })
+const components = {
+	Link: {
+		baseStyle: {
+			_focus: {
+				boxShadow: 'none',
+			},
+		},
+	},
+}
+
+export const theme = extendTheme({ colors, fonts, styles, components })

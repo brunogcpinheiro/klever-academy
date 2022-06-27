@@ -1,14 +1,10 @@
 import { Box, Stack, Text } from '@chakra-ui/react'
-import Banner from '../../Banner'
 import Rating from '../../common/Rating'
 import Player from '../../Player'
 
 const Video = ({ video }) => {
 	return (
-		<Stack spacing={6}>
-			<Box>
-				<Banner image={video?.thumbnail_url} />
-			</Box>
+		<Stack spacing={6} mt={10}>
 			<Box>
 				<Text fontSize='5xl' fontWeight='bold' color='white'>
 					{video?.title}

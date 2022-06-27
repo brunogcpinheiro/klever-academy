@@ -4,3 +4,10 @@ export const truncate = (str, length) => {
 	}
 	return str
 }
+
+export const slugify = text => {
+	return text
+		.toLowerCase()
+		.replace(/ /g, '-')
+		.replace(/[^\w-]+/g, '')
+}

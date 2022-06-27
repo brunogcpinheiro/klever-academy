@@ -4,16 +4,9 @@ import { BiMovie } from 'react-icons/bi'
 import { FiPlayCircle } from 'react-icons/fi'
 import Link from 'next/link'
 import Rating from '../../common/Rating'
-import { truncate } from '../../../utils'
+import { truncate, slugify } from '../../../utils'
 
 const ResourceCard = ({ id, title, description, rate }) => {
-	const slugify = text => {
-		return text
-			.toLowerCase()
-			.replace(/ /g, '-')
-			.replace(/[^\w-]+/g, '')
-	}
-
 	return (
 		<Stack bgColor='brand.secondary' borderRadius='sm' p={4} h='72' w='fit-content' justifyContent='space-between'>
 			<Icon as={BiMovie} color='gray.100' boxSize='10' />
