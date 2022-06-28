@@ -1,7 +1,8 @@
 import { Box, Link, Stack, Text } from '@chakra-ui/react'
 import dayjs from 'dayjs'
 import NextLink from 'next/link'
-import Player from '../../Player'
+import parse from 'html-react-parser'
+import Image from 'next/image'
 
 const Article = ({ article }) => {
 	return (
@@ -12,45 +13,29 @@ const Article = ({ article }) => {
 				</Text>
 			</Box>
 			<Box>
-				<Text fontSize='5xl' fontWeight='bold' color='white'>
-					Original text:{' '}
-					<NextLink href={article?.font}>
-						<Link>{article?.font}</Link>
+				<Text fontSize='sm' fontWeight='bold' color='gray.300'>
+					Original:{' '}
+					<NextLink href={article?.font} passHref>
+						<Link target={'_blank'}>{article?.font}</Link>
 					</NextLink>
 				</Text>
 			</Box>
+			<Box w='full' height='400px' position='relative'>
+				<Image layout='fill' src={article?.thumbnail_url} alt={article?.title} />
+			</Box>
 			<Stack>
-				<Text fontSize='md' color='white' fontStyle='italic'>
+				<Text fontSize='md' color='gray.300' fontStyle='italic'>
 					Published At: {dayjs(article?.published_at).format('MMM DD, YYYY')}
 				</Text>
-				<Text fontSize='xl' color='white' fontWeight='bold'>
-					Overview
+				<Text fontWeight='bold' color='gray.400' fontSize='sm'>
+					Author: Klever
 				</Text>
-				<Text fontSize='md' color='white'>
-					{article?.description}
-				</Text>
-				<Stack>
-					<Stack direction='row'>
-						<Text fontWeight='bold' color='white' fontSize='sm'>
-							Author:
-						</Text>
-						<Text color='white' fontSize='sm'>
-							Klever
-						</Text>
-					</Stack>
-					<Stack direction='row'>
-						<Text fontWeight='bold' color='white' fontSize='sm'>
-							Reward:
-						</Text>
-						<Text color='brand.primary' fontSize='sm'>
-							100 KLV
-						</Text>
-					</Stack>
-				</Stack>
+				<Box pt={10}>
+					<Text fontSize='md' color='white'>
+						{parse(article?.text) || ''}
+					</Text>
+				</Box>
 			</Stack>
-			<Box w='full'>
-				<Player videoUrl={article?.video_url} />
-			</Box>
 		</Stack>
 	)
 }

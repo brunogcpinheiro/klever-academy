@@ -19,14 +19,10 @@ const ResourceCard = ({ id, title, description, rate, published_at, type }) => {
 				<Text color='gray.400' fontSize='xs' fontStyle='italic'>
 					Published at: {dayjs(published_at).format('MMM DD, YYYY') || ''}
 				</Text>
-				{type === 'video' && (
-					<>
-						<Rating rate={rate} />
-						<Text flex='1' color='gray.300' fontSize='sm' fontWeight='bold'>
-							{truncate(description, 50)}
-						</Text>
-					</>
-				)}
+				{type === 'video' && <Rating rate={rate} />}
+				<Text color='gray.300' fontSize='sm' fontWeight='bold' pt={4}>
+					{truncate(description, 50)}
+				</Text>
 			</Box>
 			<Link href={`/${type === 'video' ? 'videos' : 'articles'}/${slugify(title)}--${id}`}>
 				<Box display='flex' alignItems='center' justifyContent='flex-end'>
