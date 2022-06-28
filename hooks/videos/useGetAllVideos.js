@@ -11,6 +11,6 @@ export const useGetAllVideos = () => {
 	return {
 		videos: sortedDataByDate,
 		featuredVideos,
-		isLoading,
+		isLoadingVideos: isLoading,
 	}
 }

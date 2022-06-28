@@ -6,7 +6,7 @@ import { useGetAllVideos } from '../../hooks/videos/useGetAllVideos'
 import { Loader } from '../../components/common/Loader'
 
 const VideosPage = () => {
-	const { videos, isLoading } = useGetAllVideos()
+	const { videos, isLoadingVideos } = useGetAllVideos()
 
 	return (
 		<Box bgColor='brand.background'>
@@ -17,7 +17,7 @@ const VideosPage = () => {
 			</Head>
 
 			<Main>
-				{isLoading ? (
+				{isLoadingVideos ? (
 					<Box h='calc(100vh - 305px)' display={'flex'} alignItems={'center'} justifyContent={'center'}>
 						<Loader />
 					</Box>

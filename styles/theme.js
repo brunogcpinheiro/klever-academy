@@ -47,6 +47,13 @@ const components = {
 			},
 		},
 	},
+	Button: {
+		baseStyle: {
+			_focus: {
+				boxShadow: 'none',
+			},
+		},
+	},
 }
 
 export const theme = extendTheme({ colors, fonts, styles, components })

@@ -17,6 +17,7 @@ const SocialButton = ({ children, label, href }) => {
 			alignItems={'center'}
 			justifyContent={'center'}
 			transition={'background 0.3s ease'}
+			target={'_blank'}
 			_hover={{
 				bg: useColorModeValue('blackAlpha.200', 'whiteAlpha.200'),
 			}}
@@ -58,13 +59,13 @@ const Footer = () => {
 				>
 					<Text>© {new Date().getFullYear()} Klever. All rights reserved</Text>
 					<Stack direction={'row'} spacing={6}>
-						<SocialButton label={'Twitter'} href={'#'}>
+						<SocialButton label={'Twitter'} href={'https://twitter.com/klever_io'}>
 							<FaTwitter />
 						</SocialButton>
-						<SocialButton label={'YouTube'} href={'#'}>
+						<SocialButton label={'YouTube'} href={'https://www.youtube.com/c/KleverFinance'}>
 							<FaYoutube />
 						</SocialButton>
-						<SocialButton label={'Instagram'} href={'#'}>
+						<SocialButton label={'Instagram'} href={'https://www.instagram.com/klever.io'}>
 							<FaInstagram />
 						</SocialButton>
 					</Stack>
