@@ -53,6 +53,9 @@ const Rating = ({ videoId, rate }) => {
 				})}
 			</Stack>
 			<Box display='flex' alignItems='center' mt={2}>
+				<Text color='gray.200' mr={1} fontSize='xs'>
+					Overall Rating:
+				</Text>
 				<AiFillStar color='yellow' size='10' />
 				<Text color='yellow.200' ml={1} fontSize='xs'>
 					{rate}
