@@ -11,15 +11,15 @@ import {
 	useDisclosure,
 	Tooltip,
 } from '@chakra-ui/react'
-import { HamburgerIcon, CloseIcon, ChevronDownIcon, ChevronRightIcon, SunIcon } from '@chakra-ui/icons'
+import { HamburgerIcon, CloseIcon, SunIcon } from '@chakra-ui/icons'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import Logo from '../../../assets/img/logo.svg'
 import BrazilImage from '../../../assets/img/brazil.webp'
-// import USAImage from '../../../assets/img/usa.webp'
+import USAImage from '../../../assets/img/usa.webp'
 import { useAuth } from '../../../context/Auth'
 import { useEffect } from 'react'
-import { refreshLogin } from '../../../services/users'
+import { logoutUser, refreshLogin } from '../../../services/users'
 import toast from 'react-hot-toast'
 import NextLink from 'next/link'
 
@@ -27,6 +27,18 @@ const Header = () => {
 	const router = useRouter()
 	const { isOpen, onToggle } = useDisclosure()
 	const { user, setUser } = useAuth()
+
+	const handleLogout = async () => {
+		try {
+			await logoutUser(localStorage.getItem('klever-academy:token'))
+			setUser({})
+			localStorage.removeItem('klever-academy:token')
+			router.push('/')
+			toast.success('Logged out successfully!')
+		} catch (error) {
+			toast.error('Something went wrong to logout user!')
+		}
+	}
 
 	useEffect(() => {
 		if (localStorage.getItem('klever-academy:token')) {
@@ -75,20 +87,22 @@ const Header = () => {
 				</Flex>
 
 				<Stack justify='flex-end' direction='row' alignItems='center' spacing={6}>
-					{/* <Box display='flex' alignItems='center' w='70px'>
+					<Box display='flex' alignItems='center' w='70px'>
 						<Tooltip label='EN-US'>
 							<Box cursor='pointer' mx={1} mt={1}>
 								<Image w='20px' src={USAImage} alt='en-us' />
 							</Box>
 						</Tooltip>
-						<Tooltip label='PT-BR'>
-							<Box cursor='pointer' mx={1} mt={1}>
+						<Tooltip label='PT-BR (Coming soon)'>
+							<Box mx={1} mt={1} cursor={'not-allowed'}>
 								<Image w='20px' src={BrazilImage} alt='pt-br' />
 							</Box>
 						</Tooltip>
-					</Box> */}
-					<SunIcon fontSize='lg' cursor='pointer' />
-					{Object.keys(user).length === 0 ? (
+					</Box>
+					<Tooltip label='Light Theme (Coming soon)'>
+						<SunIcon fontSize='lg' cursor='not-allowed' />
+					</Tooltip>
+					{user && Object.keys(user).length === 0 ? (
 						<>
 							<NextLink href='/login' passHref>
 								<Link
@@ -123,7 +137,13 @@ const Header = () => {
 					) : (
 						<Box display='flex' alignItems='center'>
 							<Text fontWeight='bold'>Hello, {user?.firstName || '...'}!</Text>
-							<Button size='xs' ml={4} bgColor='brand.primary' _hover={{ opacity: 0.8 }}>
+							<Button
+								size='xs'
+								ml={4}
+								bgColor='brand.primary'
+								_hover={{ opacity: 0.8 }}
+								onClick={handleLogout}
+							>
 								Logout
 							</Button>
 						</Box>

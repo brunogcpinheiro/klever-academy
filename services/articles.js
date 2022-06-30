@@ -1,7 +1,7 @@
 import { api } from './api'
 
 export const getAllArticles = async () => {
-	const { data } = await api.get('/get-all-articles')
+	const { data } = await api.get('/articles')
 	return data
 }
 

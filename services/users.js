@@ -21,6 +21,24 @@ export const loginUser = async payload => {
 	return res
 }
 
+export const logoutUser = async token => {
+	try {
+		const res = await api.post(
+			'/user/logout',
+			{},
+			{
+				headers: {
+					Authorization: `Token ${token}`,
+				},
+			}
+		)
+
+		return res
+	} catch (error) {
+		return error
+	}
+}
+
 export const refreshLogin = async token => {
 	try {
 		const res = await api.post(
