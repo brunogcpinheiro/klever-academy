@@ -1,34 +1,146 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<div id="top"></div>
+
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+
+![kleverAcademyLogo](https://user-images.githubusercontent.com/78596051/176555372-5de3dd88-6cba-499e-bdc5-2d841f9a7060.png)
+
+  <p align="center">
+    <a href="https://klever-academy.netlify.app/">View Demo</a>
+    ·
+    <a href="https://github.com/brunogcpinheiro/klever-academy/issues">Report Bug</a>
+  </p>
+</div>
+
+<!-- ABOUT THE PROJECT -->
+
+## About The Project
+
+Nowadays we come across many people who have "fear" or "aversion" to work with cryptocurrencies often this is due to lack of knowledge. For this reason, we thought of making a site where the user can study and learn about the subject and thus be able to enter this new world...
+
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+  </ol>
+</details>
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+### Built With
+
+-   [Next.js](https://nextjs.org/) (Front End: This Repository)
+-   [Django](https://www.django-rest-framework.org/) (Back End: <a href="https://github.com/FelipeFloresWeb/kleveracademy"  target="_blank">Repository</a>)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+<!-- GETTING STARTED -->
 
 ## Getting Started
 
-First, run the development server:
+This is an example of how you may give instructions on setting up your project locally.
+To get a local copy up and running follow these simple example steps.
 
-```bash
-npm run dev
-# or
-yarn dev
+### Prerequisites
+
+This is an example of how to list things you need to use the software and how to install them.
+
+-   [Node.js](https://www.nodejs.org)
+
+### Installation
+
+1. Clone the repo
+
+```sh
+git clone git@github.com:brunogcpinheiro/klever-academy.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Access project folder
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+```sh
+cd klever-academy
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+3. Install dependencies
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+```sh
+yarn install
+npm install
+```
 
-## Learn More
+4.  Run the project
 
-To learn more about Next.js, take a look at the following resources:
+```sh
+yarn dev
+npm run dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+<!-- ROADMAP -->
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Roadmap
 
-## Deploy on Vercel
+User-Related Actions:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+-   [x] Create
+-   [x] Authentication
+-   [x] Log in
+-   [x] Log out
+-   [ ] Profile
+-   [ ] Change password
+-   [ ] Forgot password
+-   [ ] See favorite videos
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+For Vídeos:
+
+-   [x] Get all
+-   [x] Get by id
+-   [x] Rate
+-   [ ] Add favorite
+-   [ ] Remove from favorites
+-   [ ] Grab all favorites
+
+For Articles:
+
+-   [x] Get all
+-   [x] Get by id
+
+## :hourglass: Comming Soon :hourglass::
+
+-   [ ] Courses
+-   [ ] User Level
+-   [ ] User Points
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+<!-- CONTRIBUTING -->
+
+## Contributing
+
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
+Don't forget to give the project a star! Thanks again!
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+<p align="right">(<a href="#top">back to top</a>)</p>
