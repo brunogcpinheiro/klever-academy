@@ -116,8 +116,8 @@ const Header = () => {
 						<>
 							<NextLink href='/login' passHref>
 								<Link
-									display={{ base: 'none', md: 'inline-flex' }}
-									fontSize='sm'
+									display={'inline-flex'}
+									fontSize={['xs', 'xs', 'sm']}
 									fontWeight={600}
 									size='sm'
 									color='white'
@@ -137,7 +137,7 @@ const Header = () => {
 									variant='link'
 									color='white'
 									fontWeight='bold'
-									fontSize='sm'
+									fontSize={['xs', 'xs', 'sm']}
 									_hover={{ textDecoration: 'none', opacity: 0.8 }}
 								>
 									Sign up
@@ -169,7 +169,7 @@ const DesktopNav = () => {
 	const linkHoverColor = 'gray.200'
 
 	return (
-		<Stack direction={'row'} spacing={4}>
+		<Stack direction={'row'} spacing={2}>
 			{NAV_ITEMS.map(navItem => (
 				<Box key={navItem.label}>
 					<NextLink href={navItem?.href} passHref>
