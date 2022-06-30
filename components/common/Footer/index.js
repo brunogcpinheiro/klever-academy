@@ -41,6 +41,9 @@ const Footer = () => {
 				<Image src={Logo} alt='Klever Logo' />
 				<Stack direction={'row'} spacing={6}>
 					<Link href='/'>Home</Link>
+					<Link href='https://klever.finance' isExternal>
+						About Klever
+					</Link>
 					<Link href='/explore'>Explore</Link>
 					<Link href='/videos'>Videos</Link>
 					<Link href='/articles'>Articles</Link>

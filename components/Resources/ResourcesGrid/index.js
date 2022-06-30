@@ -15,7 +15,7 @@ const ResourcesGrid = () => {
 					<Loader />
 				</Box>
 			) : (
-				<Grid templateColumns='repeat(6, 1fr)' gap={4}>
+				<Grid templateColumns='repeat(5, 1fr)' gap={4}>
 					{featuredVideos?.map(video => (
 						<ResourceCard key={video?.id} type='video' {...video} />
 					))}

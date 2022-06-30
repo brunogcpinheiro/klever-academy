@@ -1,4 +1,4 @@
-import { Container, Flex, SimpleGrid, Text } from '@chakra-ui/react'
+import { Flex, SimpleGrid, Text } from '@chakra-ui/react'
 import VideoCard from './VideoCard'
 
 const Videos = ({ videos }) => {

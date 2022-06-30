@@ -7,13 +7,23 @@ import dayjs from 'dayjs'
 import Rating from '../../common/Rating'
 import { truncate, slugify } from '../../../utils'
 import { AiFillRead } from 'react-icons/ai'
+import Image from 'next/image'
 
-const ResourceCard = ({ id, title, description, rate, published_at, type }) => {
+const ResourceCard = ({ id, title, description, rate, thumbnail_url, published_at, type }) => {
 	return (
-		<Stack bgColor='brand.secondary' borderRadius='sm' p={4} h='80' w='fit-content' justifyContent='space-between'>
+		<Stack
+			bgColor='brand.secondary'
+			borderRadius='sm'
+			p={4}
+			h='420px'
+			w='fit-content'
+			justifyContent='space-between'
+		>
 			<Box flex='1'>
-				<Icon as={type === 'video' ? BiMovie : RiNewspaperLine} color='gray.100' boxSize='10' />
-				<Text color='gray.100' fontSize='sm' fontWeight='bold' mb={2}>
+				<Box position={'relative'} w='full' height='130px'>
+					<Image layout='fill' src={thumbnail_url} alt={title} />
+				</Box>
+				<Text color='gray.100' fontSize='sm' fontWeight='bold' my={4}>
 					{truncate(title, 35)}
 				</Text>
 				<Text color='gray.400' fontSize='xs' fontStyle='italic'>

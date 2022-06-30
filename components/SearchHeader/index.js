@@ -1,21 +1,28 @@
 import { Box, Button, Input, Stack, Text } from '@chakra-ui/react'
 import { FaSearch } from 'react-icons/fa'
 
-const SearchHeader = () => {
+const SearchHeader = ({ filter, setFilter, setSearch, handleSearch }) => {
 	return (
 		<Box py={6} display='flex' alignItems='center' justifyContent='space-between'>
 			<Box display='flex' alignItems='center'>
 				<Input
 					w='md'
-					placeholder='Search article, video, course...'
+					placeholder='Search article, video...'
 					borderWidth={1}
 					borderColor='brand.accent'
 					size='sm'
 					borderRadius='sm'
 					color='white'
 					_placeholder={{
-						color: 'gray.700',
+						color: 'gray.500',
 					}}
+					_hover={{
+						borderColor: 'brand.secondary',
+					}}
+					_focus={{
+						borderColor: 'brand.primary',
+					}}
+					onChange={e => setSearch(e.target.value)}
 				/>
 				<Button
 					bgColor='brand.primary'
@@ -29,6 +36,7 @@ const SearchHeader = () => {
 					_hover={{
 						opacity: 0.8,
 					}}
+					onClick={handleSearch}
 				>
 					Search
 				</Button>
@@ -36,7 +44,7 @@ const SearchHeader = () => {
 			<Box>
 				<Stack direction='row' spacing={10}>
 					<Text as='span' color='white' fontWeight='bold' fontSize='sm'>
-						List by:
+						Filter by:
 					</Text>
 					<Button
 						variant='link'
@@ -44,6 +52,19 @@ const SearchHeader = () => {
 						_hover={{
 							color: 'brand.primary',
 						}}
+						onClick={() => setFilter('All')}
+						color={filter === 'All' ? 'brand.primary' : 'white'}
+					>
+						All
+					</Button>
+					<Button
+						variant='link'
+						size='sm'
+						_hover={{
+							color: 'brand.primary',
+						}}
+						onClick={() => setFilter('Video')}
+						color={filter === 'Video' ? 'brand.primary' : 'white'}
 					>
 						Videos
 					</Button>
@@ -53,6 +74,8 @@ const SearchHeader = () => {
 						_hover={{
 							color: 'brand.primary',
 						}}
+						onClick={() => setFilter('Article')}
+						color={filter === 'Article' ? 'brand.primary' : 'white'}
 					>
 						Articles
 					</Button>

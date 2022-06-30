@@ -9,7 +9,6 @@ const ArticleSlug = () => {
 	const router = useRouter()
 	const { slug } = router.query
 	const id = slug && slug.split('--')[1]
-	console.log(id)
 	const { article } = useGetArticle(id)
 
 	return (

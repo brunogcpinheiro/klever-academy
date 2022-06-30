@@ -167,7 +167,7 @@ const DesktopNav = () => {
 			{NAV_ITEMS.map(navItem => (
 				<Box key={navItem.label}>
 					<NextLink href={navItem?.href} passHref>
-						<Link>
+						<Link isExternal={navItem?.external}>
 							<Text
 								p={2}
 								fontSize={'sm'}
@@ -242,6 +242,11 @@ const MobileNavItem = ({ label, children, href }) => {
 }
 
 const NAV_ITEMS = [
+	{
+		label: 'About Klever',
+		href: 'https://klever.finance/',
+		external: true,
+	},
 	{
 		label: 'Explore',
 		href: '/explore',
