@@ -17,9 +17,9 @@ const Hero = () => {
 					>
 						All You Need To Know About Crypto and Klever World
 					</Text>
-					<Text fontSize='sm' color='white'>
-						Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-						the industrys standard dummy text.
+					<Text fontSize='md' color='white'>
+						Here you will find everything to stay on top of the cryptocurrency world and the entire Klever
+						ecosystem. And best of all, you can earn tokens for it!
 					</Text>
 					<Stack direction={{ base: 'column', md: 'row' }} spacing={4}>
 						<NextLink href='/explore' passHref>
