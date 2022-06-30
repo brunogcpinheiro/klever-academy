@@ -1,4 +1,4 @@
-import { Box, Grid, Stack } from '@chakra-ui/react'
+import { Box, Grid } from '@chakra-ui/react'
 import ResourceCard from '../ResourceCard'
 import { useGetAllVideos } from '../../../hooks/videos/useGetAllVideos'
 import { Loader } from '../../common/Loader'

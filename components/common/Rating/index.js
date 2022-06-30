@@ -1,13 +1,22 @@
-import { useState } from 'react'
-import { Box, Stack, Text } from '@chakra-ui/react'
+import { useCallback, useEffect, useState } from 'react'
+import { Box, Button, Stack, Text, Tooltip } from '@chakra-ui/react'
 import { AiFillStar } from 'react-icons/ai'
 import { useRateVideo } from '../../../hooks/videos/useRateVideo'
 import toast from 'react-hot-toast'
+import { useAuth } from '../../../context/Auth'
 
 const Rating = ({ videoId, rate }) => {
 	const [rating, setRating] = useState(0)
 	const [hover, setHover] = useState(0)
 	const { submitRate } = useRateVideo()
+	const { user } = useAuth()
+
+	useEffect(() => {
+		if (user) {
+			const videoRate = user?.rateVideos?.find(rate => Object.keys(rate)[0] === String(videoId))
+			if (videoRate) setRating(Object.values(videoRate))
+		}
+	}, [user, videoId])
 
 	return (
 		<Box>
@@ -16,24 +25,27 @@ const Rating = ({ videoId, rate }) => {
 					i += 1
 					return (
 						<Box
+							cursor={rating !== 0 ? 'not-allowed' : 'pointer'}
+							pointerEvents={rating !== 0 ? 'not-allowed' : 'pointer'}
 							w={2}
 							key={i}
 							className={i <= (hover || rating) ? 'on' : 'off'}
 							onClick={() => {
-								if (localStorage.getItem('klever-academy:token')) {
-									submitRate({
-										id: videoId,
-										rating: i,
-										token: localStorage.getItem('klever-academy:token'),
-									})
-									setRating(i)
-								} else {
-									toast('Please login to rate this video', { type: 'error' })
+								if (rating === 0) {
+									if (localStorage.getItem('klever-academy:token')) {
+										submitRate({
+											id: videoId,
+											rating: i,
+											token: localStorage.getItem('klever-academy:token'),
+										})
+										setRating(i)
+									} else {
+										toast('Please login to rate this video', { type: 'error' })
+									}
 								}
 							}}
-							onMouseEnter={() => setHover(i)}
-							onMouseLeave={() => setHover(rating)}
-							cursor='pointer'
+							onMouseEnter={() => rating === 0 && setHover(i)}
+							onMouseLeave={() => rating === 0 && setHover(rating)}
 						>
 							<AiFillStar />
 						</Box>

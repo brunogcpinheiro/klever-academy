@@ -1,6 +1,4 @@
 import { Box, Button, Icon, Stack, Text } from '@chakra-ui/react'
-import { BiMovie } from 'react-icons/bi'
-import { RiNewspaperLine } from 'react-icons/ri'
 import { FiPlayCircle } from 'react-icons/fi'
 import Link from 'next/link'
 import dayjs from 'dayjs'
