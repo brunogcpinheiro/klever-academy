@@ -10,8 +10,9 @@ import {
 	useColorModeValue,
 	useDisclosure,
 	Tooltip,
+	Icon,
 } from '@chakra-ui/react'
-import { HamburgerIcon, CloseIcon, SunIcon } from '@chakra-ui/icons'
+import { HamburgerIcon, CloseIcon, SunIcon, ChevronDownIcon } from '@chakra-ui/icons'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import Logo from '../../../assets/img/logo.svg'
@@ -63,8 +64,15 @@ const Header = () => {
 
 	return (
 		<Box>
-			<Flex bgColor='brand.background' color='white' minH='60px' p='10px 0' align='center'>
-				<Flex flex={{ base: 1, md: 'auto' }} ml={{ base: -2 }} display={{ base: 'flex', md: 'none' }}>
+			<Flex
+				bgColor='brand.background'
+				color='white'
+				minH='60px'
+				p='10px 0'
+				align='center'
+				justifyContent={'space-between'}
+			>
+				<Flex ml={{ base: -2 }} display={{ base: 'flex', md: 'none' }}>
 					<IconButton
 						onClick={onToggle}
 						icon={isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon w={5} h={5} />}
@@ -72,10 +80,10 @@ const Header = () => {
 						aria-label={'Toggle Navigation'}
 					/>
 				</Flex>
-				<Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
+				<Flex align-self={'flex-end'}>
 					<NextLink href='/' passHref>
 						<Link>
-							<Box cursor='pointer'>
+							<Box cursor='pointer' ml={30}>
 								<Image mt='-5px' width='150px' alt='Klever Academy Logo' src={Logo} />
 							</Box>
 						</Link>
@@ -86,8 +94,8 @@ const Header = () => {
 					</Flex>
 				</Flex>
 
-				<Stack justify='flex-end' direction='row' alignItems='center' spacing={6}>
-					<Box display='flex' alignItems='center' w='70px'>
+				<Stack justify='flex-end' direction='row' alignItems='center'>
+					<Box display={['none', 'none', 'none', 'none', 'flex']} alignItems='center' w='70px'>
 						<Tooltip label='EN-US'>
 							<Box cursor='pointer' mx={1} mt={1}>
 								<Image w='20px' src={USAImage} alt='en-us' />
@@ -99,9 +107,11 @@ const Header = () => {
 							</Box>
 						</Tooltip>
 					</Box>
-					<Tooltip label='Light Theme (Coming soon)'>
-						<SunIcon fontSize='lg' cursor='not-allowed' />
-					</Tooltip>
+					<Box display={['none', 'none', 'none', 'none', 'flex']}>
+						<Tooltip label='Light Theme (Coming soon)'>
+							<SunIcon fontSize='lg' cursor='not-allowed' />
+						</Tooltip>
+					</Box>
 					{user && Object.keys(user).length === 0 ? (
 						<>
 							<NextLink href='/login' passHref>
@@ -136,14 +146,10 @@ const Header = () => {
 						</>
 					) : (
 						<Box display='flex' alignItems='center'>
-							<Text fontWeight='bold'>Hello, {user?.firstName || '...'}!</Text>
-							<Button
-								size='xs'
-								ml={4}
-								bgColor='brand.primary'
-								_hover={{ opacity: 0.8 }}
-								onClick={handleLogout}
-							>
+							<Text display={['none', 'none', 'none', 'flex', 'flex']} fontWeight='bold' ml={2} mr={4}>
+								Hello, {user?.firstName || '...'}!
+							</Text>
+							<Button size='xs' bgColor='brand.primary' _hover={{ opacity: 0.8 }} onClick={handleLogout}>
 								Logout
 							</Button>
 						</Box>
@@ -170,8 +176,8 @@ const DesktopNav = () => {
 						<Link isExternal={navItem?.external}>
 							<Text
 								p={2}
-								fontSize={'sm'}
-								fontWeight={700}
+								fontSize={['xx-small', 'xx-small', 'xx-small', 'xx-small', 'xs']}
+								fontWeight={500}
 								color={linkColor}
 								textTransform='uppercase'
 								cursor='pointer'
@@ -190,8 +196,8 @@ const DesktopNav = () => {
 				<Tooltip placement='bottom' label='Coming Soon'>
 					<Text
 						p={2}
-						fontSize={'sm'}
-						fontWeight={700}
+						fontSize={['xx-small', 'xx-small', 'xx-small', 'xx-small', 'xs']}
+						fontWeight={500}
 						color={linkColor}
 						textTransform='uppercase'
 						_hover={{
@@ -210,7 +216,7 @@ const DesktopNav = () => {
 
 const MobileNav = () => {
 	return (
-		<Stack bg='white' p={4} display={{ md: 'none' }}>
+		<Stack bg='brand.secondary' border='2px solid' borderColor={'brand.accent'} p={4} display={{ md: 'none' }}>
 			{NAV_ITEMS.map(navItem => (
 				<MobileNavItem key={navItem.label} {...navItem} />
 			))}
@@ -218,22 +224,20 @@ const MobileNav = () => {
 	)
 }
 
-const MobileNavItem = ({ label, children, href }) => {
-	const { isOpen, onToggle } = useDisclosure()
-
+const MobileNavItem = ({ label, href }) => {
 	return (
-		<Stack spacing={4} onClick={onToggle}>
+		<Stack spacing={4} bg='brand.secondary' alignItems={'center'}>
 			<Flex
 				py={2}
 				as={Link}
-				href={href}
+				href={href ?? '#'}
 				justify={'space-between'}
 				align={'center'}
 				_hover={{
 					textDecoration: 'none',
 				}}
 			>
-				<Text fontWeight={600} color={useColorModeValue('gray.600', 'gray.200')}>
+				<Text color='white' fontWeight={600}>
 					{label}
 				</Text>
 			</Flex>

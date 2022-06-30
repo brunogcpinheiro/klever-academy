@@ -3,10 +3,16 @@ import { FaSearch } from 'react-icons/fa'
 
 const SearchHeader = ({ filter, setFilter, setSearch, handleSearch }) => {
 	return (
-		<Box py={6} display='flex' alignItems='center' justifyContent='space-between'>
-			<Box display='flex' alignItems='center'>
+		<Box
+			py={6}
+			display='flex'
+			flexDirection={['column', 'column', 'column', 'row']}
+			alignItems='center'
+			justifyContent='space-between'
+		>
+			<Box display='flex' flexDirection={['column', 'column', 'row', 'row']} alignItems='center'>
 				<Input
-					w='md'
+					w='xs'
 					placeholder='Search article, video...'
 					borderWidth={1}
 					borderColor='brand.accent'
@@ -28,6 +34,7 @@ const SearchHeader = ({ filter, setFilter, setSearch, handleSearch }) => {
 					bgColor='brand.primary'
 					color='white'
 					px={8}
+					my={['6', '6', '0', '0']}
 					leftIcon={<FaSearch />}
 					textTransform='uppercase'
 					size='sm'
@@ -41,9 +48,15 @@ const SearchHeader = ({ filter, setFilter, setSearch, handleSearch }) => {
 					Search
 				</Button>
 			</Box>
-			<Box>
-				<Stack direction='row' spacing={10}>
-					<Text as='span' color='white' fontWeight='bold' fontSize='sm'>
+			<Box mt={['0', '0', '6', '0']}>
+				<Stack direction='row' spacing={6}>
+					<Text
+						display={['none', 'none', 'block', 'block']}
+						as='span'
+						color='white'
+						fontWeight='bold'
+						fontSize='sm'
+					>
 						Filter by:
 					</Text>
 					<Button

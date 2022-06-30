@@ -4,7 +4,12 @@ import ExploreContentCard from './ExploreContentCard'
 const ExploreContent = ({ resources }) => {
 	return (
 		<Flex direction='column' mt={10}>
-			<SimpleGrid columns={{ base: 1, md: 3 }} spacing={10}>
+			<SimpleGrid
+				alignItems={'center'}
+				justifyContent={['center', 'center', 'center', 'center', 'space-between']}
+				templateColumns={'repeat(auto-fill, minmax(min-content, 400px))'}
+				spacing={10}
+			>
 				{resources.length !== 0 ? (
 					resources.map(resource => (
 						<ExploreContentCard key={`${resource?.id}-${resource?.type}`} resource={resource} />

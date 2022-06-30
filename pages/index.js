@@ -19,7 +19,13 @@ export default function Home() {
 				<Box>
 					<Hero />
 					<Divider />
-					<Text color='white' fontSize='3xl' my={6} fontWeight='bold'>
+					<Text
+						color='white'
+						fontSize='3xl'
+						my={6}
+						fontWeight='bold'
+						textAlign={['center', 'center', 'center', 'center', 'left']}
+					>
 						Featured Content
 					</Text>
 					<ResourcesGrid />

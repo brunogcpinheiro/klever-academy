@@ -13,7 +13,6 @@ const ExploreContentCard = ({ resource }) => {
 			<NextLink href={`/${resource?.path}/${slugify(resource?.title)}--${resource?.id}`} passHref>
 				<Link>
 					<Box
-						maxW={'445px'}
 						w={'full'}
 						bg='brand.secondary'
 						h={'600px'}

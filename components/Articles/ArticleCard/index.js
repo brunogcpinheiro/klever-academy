@@ -13,10 +13,11 @@ const ArticleCard = ({ article }) => {
 					<Box
 						w={'full'}
 						bg='brand.secondary'
-						h={'200px'}
+						h={'280px'}
 						boxShadow={'2xl'}
 						rounded={'md'}
 						display={'flex'}
+						flexDirection={['column-reverse', 'column-reverse', 'column-reverse', 'row']}
 						justifyContent={'space-between'}
 						overflow={'hidden'}
 						_hover={{ outline: '2px solid', outlineColor: 'brand.primary', cursor: 'pointer' }}
@@ -32,13 +33,14 @@ const ArticleCard = ({ article }) => {
 							</Text>
 						</Stack>
 						<Box
-							h={'250px'}
+							h={'310px'}
 							mt={-6}
 							mb={6}
 							pos={'relative'}
 							w={'200px'}
 							borderBottom={'1px solid'}
 							borderBottomColor={'gray.600'}
+							display={['none', 'none', 'none', 'none', 'block']}
 						>
 							<Image
 								src={article?.thumbnail_url || Logo}

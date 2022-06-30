@@ -7,7 +7,12 @@ const Videos = ({ videos }) => {
 			<Text color='white' fontSize='5xl' fontWeight='bold'>
 				All Posted Videos
 			</Text>
-			<SimpleGrid columns={{ base: 1, md: 3 }} spacing={10}>
+			<SimpleGrid
+				alignItems={'center'}
+				justifyContent={['center', 'center', 'center', 'center', 'space-between']}
+				templateColumns={'repeat(auto-fill, minmax(min-content, 400px))'}
+				spacing={10}
+			>
 				{videos && videos.map(video => <VideoCard key={video?.id} video={video} />)}
 			</SimpleGrid>
 		</Flex>

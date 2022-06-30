@@ -9,14 +9,7 @@ import Image from 'next/image'
 
 const ResourceCard = ({ id, title, description, rate, thumbnail_url, published_at, type }) => {
 	return (
-		<Stack
-			bgColor='brand.secondary'
-			borderRadius='sm'
-			p={4}
-			h='420px'
-			w='fit-content'
-			justifyContent='space-between'
-		>
+		<Stack bgColor='brand.secondary' borderRadius='sm' p={4} h='420px' w='full' justifyContent='space-between'>
 			<Box flex='1'>
 				<Box position={'relative'} w='full' height='130px'>
 					<Image layout='fill' src={thumbnail_url} alt={title} />
