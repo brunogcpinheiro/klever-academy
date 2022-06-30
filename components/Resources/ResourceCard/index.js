@@ -29,7 +29,7 @@ const ResourceCard = ({ id, title, description, rate, thumbnail_url, published_a
 				<Text color='gray.400' fontSize='xs' fontStyle='italic'>
 					Published at: {dayjs(published_at).format('MMM DD, YYYY') || ''}
 				</Text>
-				{type === 'video' && <Rating rate={rate} />}
+				{type === 'video' && <Rating videoId={id} rate={rate} />}
 				<Text color='gray.300' fontSize='sm' fontWeight='bold' pt={4}>
 					{truncate(description, 50)}
 				</Text>

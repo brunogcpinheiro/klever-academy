@@ -21,7 +21,7 @@ const Video = ({ video }) => {
 				<Text fontSize='md' color='white'>
 					{video?.description}
 				</Text>
-				<Rating rate={video?.rate} />
+				<Rating videoId={video?.id} rate={video?.rate} />
 				<Stack>
 					<Stack direction='row'>
 						<Text fontWeight='bold' color='white' fontSize='sm'>
